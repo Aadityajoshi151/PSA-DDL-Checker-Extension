@@ -17,9 +17,8 @@ document.getElementById("separator_btn").addEventListener("click", function(){
 })
 
 document.getElementById("open_selected_btn").addEventListener("click", function(){
-    urls = []
-    selection = window.getSelection();
-    alert(selection)
+    //urls = []
+    urls = window.getSelection().toString().split("\n");
     if (urls != ""){
         openAll(urls);
     }
