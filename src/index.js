@@ -2,12 +2,7 @@ var urlbox = document.getElementById("urlbox");
 urlbox.focus();
 
 document.getElementById("open_all_btn").addEventListener("click", function(){
-    urls = getURLs();
-    if (urls.toString() != ""){
-        openAll(urls);
-    }
-
-    
+    openAll();
 })
 
 document.getElementById("clear_btn").addEventListener("click", function(){
@@ -21,14 +16,7 @@ document.getElementById("separator_btn").addEventListener("click", function(){
 })
 
 document.getElementById("open_selected_btn").addEventListener("click", function(){
-    //urls = []
-    urls = window.getSelection().toString().split("\n");
-    if (urls != ""){
-        openAll(urls);
-    }
-    else{
-        alert("Please select links");
-    }
+    openSelected();
 })
 
 hoster_btns = document.getElementsByClassName("btn-warning")
@@ -37,6 +25,15 @@ for(i=0; i<hoster_btns.length;i++)
     hoster_btns[i].addEventListener("click",function(){
         openSpecefic(this.innerHTML);
     })
+}
+function openSelected(){
+    urls = window.getSelection().toString().split("\n");
+    if (urls != ""){
+        openAll(urls);
+    }
+    else{
+        alert("Please select links");
+    }
 }
 function openSpecefic(hoster){
     flag=true;
@@ -60,14 +57,23 @@ function getURLs()
     return urls;
 
 }
-function openAll(urls){
-    for(i=0; i<urls.length; i++)
-    {
+function openAll(selectedurls){
+    if (!selectedurls){
+        urls = getURLs();
+    }
+    else{
+        urls = selectedurls;
+    }
+    if (urls.toString() != ""){
+        for(i=0; i<urls.length; i++)
+        {   
         if (urls[i].includes("nitro.download")){
             continue;
         }
         openURL(urls[i]);
+        } 
     } 
+    
 }
 function openURL(url){
     //This is the function that opens a URL in a new tab
