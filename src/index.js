@@ -3,7 +3,11 @@ urlbox.focus();
 
 document.getElementById("open_all_btn").addEventListener("click", function(){
     urls = getURLs();
-    openAll(urls);
+    if (urls.toString() != ""){
+        openAll(urls);
+    }
+
+    
 })
 
 document.getElementById("clear_btn").addEventListener("click", function(){
@@ -35,15 +39,21 @@ for(i=0; i<hoster_btns.length;i++)
     })
 }
 function openSpecefic(hoster){
+    flag=true;
     urls = getURLs();
-    for (i=0; i<urls.length;i++)
-    {
-        if (urls[i].includes(hoster.toLowerCase()))
-        {
-            openURL(urls[i])
+    if (urls.toString() != ""){
+    for (i=0; i<urls.length;i++){
+    if (urls[i].includes(hoster.toLowerCase())){
+        flag=false;
+        openURL(urls[i])
         }
+        }
+    if (flag){
+        alert("No links with "+hoster+" found");
     }
-}
+    }
+    }
+    
 function getURLs()
 {
     var urls = urlbox.value.split("\n");
@@ -53,6 +63,9 @@ function getURLs()
 function openAll(urls){
     for(i=0; i<urls.length; i++)
     {
+        if (urls[i].includes("nitro.download")){
+            continue;
+        }
         openURL(urls[i]);
     } 
 }
