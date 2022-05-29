@@ -1,18 +1,13 @@
-textarea
-{
-    margin: 5px 5px 0px 5px;
+textarea {
+  margin: 5px 5px 0px 5px;
 }
 
-button
-{
-    margin: 5px;
+button {
+  margin: 5px;
 }
-#container
-{
-    display: flex;
+#container {
+  display: flex;
 }
-#hoster_btns
-{
-    display: block;
-
+#hoster_btns {
+  display: block;
 }
