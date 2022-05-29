@@ -72,8 +72,7 @@ function openAll(selectedurls){
         }
         openURL(urls[i]);
         } 
-    } 
-    
+    }   
 }
 function openURL(url){
     //This is the function that opens a URL in a new tab
