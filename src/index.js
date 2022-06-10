@@ -67,7 +67,7 @@ function openAll(selectedurls){
     if (urls.toString() != ""){
         for(i=0; i<urls.length; i++)
         {   
-        if (urls[i].includes("nitro.download") && document.getElementById("nitro_check").checked == true){
+        if ((urls[i].includes("nitro.download") || urls.includes("nitroflare")) && document.getElementById("nitro_check").checked == true){
 
             continue;
         }
